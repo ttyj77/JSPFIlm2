@@ -1,0 +1,586 @@
+@charset "UTF-8";
+
+.movieChartBeScreen_btn_wrap .tabBtn_wrap h3 a.active {
+    font-weight: 700;
+    color: #222;
+}
+
+
+.movieChartBeScreen_btn_wrap .btn_allView {
+    padding: 4px 32px 4px 15px;
+    font-size: 14px;
+    color: #222;
+    line-height: 1.429em;
+    /*background: transparent url(./../images/common/ico/arrowR_8x13.png) calc(100% - 7px) center/8px 13px scroll no-repeat;*/
+    border: 1px solid #e2e2e2;
+    border-radius: 15px;
+    box-shadow: 1px 1px 1px 0 rgb(0 0 0 / 5%);
+}
+
+.policy_list {
+    display: flex;
+    justify-content: space-between;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 23px 0;
+    border-bottom: 1px solid #ebebeb;
+}
+
+.policy_list_nav {
+    display: flex;
+    justify-content: space-between;
+    max-width: 377px;
+    margin-left: 7px;
+    padding: 12px 0;
+}
+
+.policy_list_nav.nav_overMenu {
+    display: none;
+    position: relative;
+    margin-bottom: 8px;
+    padding: 25px 0 0 25px;
+}
+
+.reservationBT {
+    margin: 0;
+    padding: 0.5rem 1rem;
+
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    text-align: center;
+    text-decoration: none;
+
+    display: inline-block;
+    width: auto;
+
+    border: none;
+    border-radius: 4px;
+}
+
+.col-1_5 {
+    flex: 0 0 auto;
+    width: 9.3%;
+}
+
+.theater-box {
+    position: relative;
+    display: block;
+    width: 100%;
+    min-height: 450px;
+
+    border: 3px solid #686571;
+    border-radius: 10px;
+}
+
+.theater-box .theater-place {
+    width: 100%;
+    height: 48px;
+}
+
+
+h2.tit {
+    padding: 0 0 26px 0;
+    font-size: 1.8666em;
+    font-weight: 400;
+    letter-spacing: -1px;
+    line-height: 1.1;
+    color: #222;
+}
+
+
+.theater-box .theater-list ul {
+    /*overflow: hidden;*/
+    width: 100%;
+}
+
+ol, ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.theater-box .theater-place > ul > li:first-child {
+    width: 140px;
+}
+
+.theater-box .theater-place > ul > li > button {
+    display: block;
+    width: 100%;
+    height: 48px;
+    background-color: #f1f0f0;
+    border: none;
+}
+
+.theater-box .theater-place > ul > li.on > button {
+    color: #111111;
+}
+
+.theater-box .theater-place > ul > li {
+    float: left;
+    width: 136px;
+    height: 48px;
+    line-height: 48px;
+    border: 1px solid #b7b7b7;
+    border-width: 0 1px 1px 0;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.inner-wrap {
+    width: 1100px;
+    margin: 0 auto;
+}
+
+.theater-box .theater-list {
+    position: absolute;
+    left: 0;
+    top: 48px;
+    width: 100%;
+    min-height: 85px;
+    padding: 30px 0;
+}
+
+.theater-box .theater-list ul {
+
+    width: 100%;
+}
+
+
+.theater-box .theater-list ul li {
+    position: relative;
+    float: left;
+    width: 25%;
+    line-height: 26px;
+    text-align: left;
+    padding-left: 40px;
+    margin-bottom: 20px;
+}
+
+.mb15 {
+    margin-bottom: 40px !important;
+}
+
+.mt100 {
+    margin-top: 100px !important;
+}
+
+
+.tit-util .tit {
+    float: left;
+    padding: 0 !important;
+    line-height: 1.1;
+}
+
+h3.tit {
+
+    margin-bottom: 5%;
+    padding: 0 0 16px 0;
+    font-size: 1.6em;
+    font-weight: 400;
+    color: #503396;
+    line-height: 1.1;
+
+}
+
+.tit-util .more {
+    float: right;
+}
+
+.table-wrap {
+    position: relative;
+}
+
+.info_thead {
+    display: table-header-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+.board-list {
+    line-height: 1.3;
+}
+
+.info_table {
+    width: 100%;
+    margin: 0;
+    border: 0;
+    table-layout: fixed;
+    border-collapse: collapse;
+    empty-cells: show;
+}
+
+colgroup {
+    display: table-column-group;
+
+}
+
+.board-list > thead > tr > th {
+    height: 45px;
+    padding: 3px 10px;
+    color: #222;
+    border: 1px solid #eaeaea;
+    border-width: 0 0 1px 0;
+    background-color: #f2f4f5;
+}
+
+.info_tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+.info_tbody > tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+
+.board-list > tbody > tr > td, .board-list > tbody > tr > th {
+    height: 45px;
+    padding: 10px;
+    border: 1px solid #eaeaea;
+    border-width: 0 0 1px 0;
+    text-align: center;
+}
+
+.tit-util .more {
+    float: right;
+}
+
+
+.input_label {
+    width: 100%;
+    height: 100%;
+    border: 2px dashed;
+    border-radius: 5px;
+    display: block;
+    padding: 1.2em;
+    transition: border 300ms ease;
+    cursor: pointer;
+    text-align: center;
+}
+
+.text_row {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.container > h3 {
+    margin-bottom: 2%;
+}
+
+.nav.nav-tabs.tab {
+    justify-content: space-evenly;
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    align-items: baseline;
+    margin-top: 3%;
+    font-size: 18px;
+}
+
+.contents.index {
+    width: 1200px !important;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.img_wrap.index {
+    overflow: hidden;
+    position: relative;
+    width: 200px !important;
+    height: 294px !important;
+    border-radius: 10px;
+}
+
+.row .calendar {
+    display: flex;
+    justify-content: center
+}
+
+.calendarRow {
+    margin-right: 3%;
+    margin-top: 1.5%;
+}
+
+.theater-tit {
+
+    width: 100%;
+    overflow: hidden;
+    background-color: #fff;
+    display: block;
+    padding: 10px 20px;
+    background-color: #eeeeee;
+    border-top: 1px solid #eaeaea !important;
+    border-bottom: 1px solid #eaeaea;
+    margin-top: 15px !important;
+    margin-bottom: 20px;
+}
+
+.theater-list .theater-type-box .theater-type {
+    text-align: left;
+    width: 170px;
+    display: table-cell;
+    vertical-align: middle;
+    position: absolute;
+    top: 20px;
+    left: 0;
+    padding: 0 !important;
+}
+
+.theater-list .theater-type-box {
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+}
+
+.theater-list .theater-type-box .theater-type p.theater-name {
+    font-size: 1.2em;
+    color: #444;
+    font-weight: 400;
+    margin-bottom: 10px;
+    line-height: 1em;
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-type p.chair {
+    color: #666;
+    margin-bottom: 10px;
+    line-height: 1em;
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-time {
+    width: 100%;
+    margin-left: 190px;
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-type-area {
+    display: table-cell;
+    vertical-align: middle;
+    width: 100px;
+    background-color: #f2f4f5;
+    text-align: center;
+    color: #444;
+    font-weight: 700;
+    border-bottom: 0;
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-time-box {
+    display: table-cell;
+    width: 800px;
+
+}
+
+.reserve.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table {
+    border-top: 1px solid #ebebeb;
+    border-left: 1px solid #ebebeb;
+    width: 800px;
+    margin-left: 9px;
+    width: auto;
+    table-layout: auto;
+}
+
+table caption {
+    overflow: hidden;
+    width: 0;
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+    opacity: 0;
+}
+
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td {
+    width: 99px;
+    border-right: 1px solid #ebebeb;
+    border-bottom: 1px solid #ebebeb;
+    text-align: center;
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab {
+    width: 100%;
+    height: 69px;
+    display: table;
+}
+
+.theater-list-box .theater-list .theater-type-box .theater-time .time-list-table tbody tr td .td-ab .txt-center {
+    display: table-cell;
+    vertical-align: middle;
+    position: relative;
+}
+
+
+.txt-center:hover .play-time {
+    background-color: #0c63e4;
+    display: block;
+    color: white;
+
+}
+
+.play-time {
+    display: none;
+    /*position: absolute;*/
+}
+
+.flex-container {
+    /*width: 1500px*/
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    /*min-width: 500px;*/
+    justify-content: space-between;
+    margin-top: 10%;
+
+
+}
+
+.flex-container > li > img {
+    width: 350px;
+    height: 490px;
+    margin-bottom: 20%;
+}
+
+.info-box {
+    margin-top: 5%;
+    color: black;
+}
+
+.T-information {
+    margin-top: 2%;
+    color: black;
+}
+
+.T-information > div {
+    margin-bottom: 1%;
+}
+
+.T-info-content > span {
+    font-weight: bold;
+
+}
+
+.cinema-input {
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.form-control.inputBox {
+    width: 40% !important;
+    margin-bottom: 8% !important;
+}
+
+.inputBT {
+    margin-bottom: 8% !important;
+}
+
+.innerFont {
+    color: black;
+    display: flex;
+    justify-content: center;
+    margin-right: 8px;
+}
+
+.actorButton {
+    width: 20%;
+    height: 35px;
+    background-color: #734ca6b5;
+    border-color: white;
+    margin-bottom: 2%;
+}
+
+.actorButtonContainer {
+    margin-left: 7%;
+    width: 90%;
+    height: 100%;
+}
+
+.insertBt {
+    margin-top: 3%;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    margin-left: 37%;
+}
+
+.sm-select {
+    width: 20% !important;
+}
+
+.logout_button {
+    border: none;
+    background: white;
+
+}
+
+.logout_button > i {
+    margin-right: 8px;
+    color: #5830E0;
+}
+
+.manageBt {
+    color: black !important;
+    text-align: center;
+    margin-top: 2%;
+    margin-right: 3%;
+    max-width: 19rem;
+    height: 10rem;
+}
+
+.innerTop {
+    background-color: #4d68ff;
+    border-color: #4d68ff;
+    width: 90%;
+}
+
+.innerUnder {
+    background-color: #4d68ff;
+    border-color: #4d68ff;
+    width: 90%;
+    margin-top: 6%
+}
+
+.replyBT {
+    height: 43px;
+    font-size: 12px;
+    width: 100px;
+    margin-left: 3%;
+}
+
+.reply_box {
+    display: flex;
+    justify-content: space-around;
+}
+
+.review-insertBox {
+    display: flex;
+    height: 50px;
+
+}
+
+.review-insertBox > h5 {
+    text-align: center;
+    line-height: 50px
+}
+
+.star_box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
