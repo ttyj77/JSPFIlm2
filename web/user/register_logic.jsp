@@ -20,11 +20,12 @@
     String username = request.getParameter("username");
     String password = request.getParameter("password");
     String nickname = request.getParameter("nickname");
-
+    String name = request.getParameter("name");
     UserDTO userDto = new UserDTO();
     userDto.setUsername(username);
     userDto.setPassword(password);
     userDto.setNickname(nickname);
+    userDto.setName(name);
 
     ConnectionMaker connectionMaker = new MysqlConnectionMaker();
     UserController userController = new UserController(connectionMaker);

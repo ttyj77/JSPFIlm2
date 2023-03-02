@@ -19,12 +19,13 @@ public class UserController {
     }
 
     public boolean insert(UserDTO userDTO) {
-        String query = "insert into user (username, password, nickname) values (?,?,?)";
+        String query = "insert into user (username, password, nickname,name) values (?,?,?,?)";
         try {
             PreparedStatement pstmt = connection.prepareStatement(query);
             pstmt.setString(1, userDTO.getUsername());
             pstmt.setString(2, userDTO.getPassword());
             pstmt.setString(3, userDTO.getNickname());
+            pstmt.setString(4, userDTO.getName());
 
             pstmt.executeUpdate();
 
@@ -69,12 +70,12 @@ public class UserController {
     }
 
     public void update(UserDTO userDTO) {
-        String query = "update user set password = ?, nickname = ? where id = ?";
+        String query = "update user set  nickname = ? ,name=? where id = ?";
 
         try {
             PreparedStatement pstmt = connection.prepareStatement(query);
-            pstmt.setString(1, userDTO.getPassword());
-            pstmt.setString(2, userDTO.getNickname());
+            pstmt.setString(1, userDTO.getNickname());
+            pstmt.setString(2, userDTO.getName());
             pstmt.setInt(3, userDTO.getId());
 
             pstmt.executeUpdate();
@@ -114,6 +115,7 @@ public class UserController {
                 u.setId(resultSet.getInt("id"));
                 u.setNickname(resultSet.getString("nickname"));
                 u.setUsername(resultSet.getString("username"));
+                u.setName(resultSet.getString("name"));
                 u.setRole(resultSet.getInt("role"));
                 return u;
             }
@@ -227,7 +229,6 @@ public class UserController {
 
         return false;
     }
-
 
 
     //반려

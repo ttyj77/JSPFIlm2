@@ -59,6 +59,10 @@
                             <input name="password" type="password">
                         </div>
                         <div class="form-group">
+                            <label>name</label>
+                            <input name="name" type="text" placeholder="이름을 입력해주세요">
+                        </div>
+                        <div class="form-group">
                             <label>Nickname</label>
                             <input name="nickname" type="text" placeholder="사용하실 닉네임을 입력해주세요">
                         </div>

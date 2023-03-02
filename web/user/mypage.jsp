@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="/assets/css/glightbox.min.css"/>
     <link rel="stylesheet" href="/assets/css/main.css"/>
     <link rel="stylesheet" href="/assets/css/cgv.css"/>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 
@@ -23,11 +25,14 @@
     UserController userController = new UserController(connectionMaker);
     UserDTO logIn = (UserDTO) session.getAttribute("logIn");
 
-    UserDTO u = userController.selectOne(logIn.getId());
 
-    pageContext.setAttribute("u", u); //영화 전체 리스트
-    System.out.println(u.getUsername());
-
+    if (logIn == null) {
+        response.sendRedirect("/index.jsp");
+    } else {
+        UserDTO u = userController.selectOne(logIn.getId());
+        pageContext.setAttribute("u", u); //영화 전체 리스트
+        System.out.println(u.getUsername());
+    }
 %>
 <%@include file="/layout/header.jsp" %>
 <!-- 회원정보 수정부분 -->
@@ -40,37 +45,43 @@
                     <form action="/update_logic" method="post" id="update_logic">
                         <!-- <input th:type="hidden" th:value="secret" name="secret_Key" /> -->
                         <div class="form-group">
-                            <label>회원번호</label>
-                            <input name="c_id" id="c_id" value="${u.id}" type="text"
-                                   required="required"/>
+                            <%--                            <label>회원번호</label>--%>
+                            <input name="c_id" id="c_id" value="${u.id}" type="hidden"
+                                   required="required" disabled/>
 
                         </div>
-                        <label>회원등급</label>
                         <div class="form-group">
-                            <c:choose>
-                                <c:when test="${logIn.role == 1}">
-                                    <input name="oldRole" id="role" value="일반회원" type="text"
-                                           required="required"/>
-                                </c:when>
-                                <c:when test="${logIn.role == 2}">
-                                    <input name="oldRole" id="oldRole" value="관리자" type="text"
-                                           required="required"/>
-                                </c:when>
-                                <c:otherwise>
-                                    <input name="oldRole" id="oldRole" value="평론가" type="text"
-                                           required="required"/>
-                                </c:otherwise>
-                            </c:choose>
-
+                            <label>Id</label>
+                            <input value="${u.username}" name="username" id="username" type="text" disabled/>
                         </div>
+
                         <div class="form-group">
                             <label>이름</label>
-                            <input value="${u.username}" name="name" id="name" type="text"/>
+                            <input value="${u.name}" name="name" id="name" type="text"/>
                         </div>
                         <div class="form-group">
                             <label>닉네임</label>
                             <input value="${u.nickname}" name="nickname" id="nickname" type="text"/>
                         </div>
+                        <label>회원등급</label>
+                        <div class="form-group">
+                            <c:choose>
+                                <c:when test="${logIn.role == 1}">
+                                    <input name="oldRole" id="oldRole" value="일반회원" type="text"
+                                           required="required" disabled/>
+                                </c:when>
+                                <c:when test="${logIn.role == 2}">
+                                    <input name="oldRole" id="oldRole" value="관리자" type="text"
+                                           required="required" disabled/>
+                                </c:when>
+                                <c:otherwise>
+                                    <input name="oldRole" id="oldRole" value="평론가" type="text"
+                                           required="required" disabled/>
+                                </c:otherwise>
+                            </c:choose>
+
+                        </div>
+
 
                     </form>
 
@@ -88,8 +99,8 @@
                     </div>
                     <div style=" display: flex; justify-content: center">
                         <input type="button"
-                               onclick="document.getElementById('update_logic').submit();"
-                               value="전송" class="btn-primary"
+                               onclick="updateUser()"
+                               value="회원정보 수정" class="btn-primary"
                                style="width: 100%; height: 55px !important; border-radius: 4px;">
 
                     </div>
@@ -168,6 +179,36 @@
         }
     }
 
+
+</script>
+
+<script>
+
+    let updateUser = () => {
+        let id = $('#c_id').val()
+        let formData = {
+            id: id,
+            username: $('#name').val(),
+            nickname: $('#nickname').val()
+        }
+
+        $.ajax({
+            url: "/user/update",
+            method: "post",
+            data: formData,
+            success: (response) => {
+                let result = JSON.parse(response);
+                console.log(result)
+                Swal.fire({
+                    icon: result.status,
+                    text: result.message
+                }).then(() => {
+                    location.href = result.nextPath;
+                })
+            }
+        })
+        console.log(formData);
+    }
 </script>
 </body>
 </html>
