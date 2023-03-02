@@ -139,8 +139,8 @@
                             <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
                                  aria-labelledby="pills-home-tab">
                                 <%--                     일반인 평점 출력--%>
-                                <div class="wrap-star star_box" id="star_box">
-                                    <div class='star-rating' id="star-rating">
+                                <div class="wrap-star star_box" id="star_box2">
+                                    <div class='star-rating' id="star-rating2">
 
                                     </div>
                                 </div>
@@ -190,7 +190,7 @@
                                     <div class="modal-header">
                                     </div>
                                     <h5 style="text-align: center; margin-bottom: 2%"> 평점 입력하기</h5>
-                                    <div class="star-rating space-x-4 mx-auto" id="starBox">
+                                    <div class="star-rating-review space-x-4 mx-auto" id="starBox">
                                         <input type="radio" id="5-stars" name="rating" value="5" v-model="ratings"
                                                onclick="starValue(this.value)"/>
                                         <label for="5-stars" class="star pr-4">★</label>
@@ -224,7 +224,7 @@
                                     <div class="modal-header">
                                     </div>
                                     <h5 style="text-align: center; margin-bottom: 2%"> 평점 입력하기</h5>
-                                    <div class="star-rating space-x-4 mx-auto" id="starBox">
+                                    <div class="star-rating-review space-x-4 mx-auto" id="starBox">
                                         <input type="radio" id="5-stars" name="rating" value="5" v-model="ratings"
                                                onclick="starValue(this.value)"/>
                                         <label for="5-stars" class="star pr-4">★</label>
@@ -309,6 +309,10 @@
 <style>
 
 
+    h2 {
+        font-size: 15px;
+    }
+
     .star-rating {
         width: 304px;
     }
@@ -326,7 +330,7 @@
         vertical-align: top;
     }
 
-    .star-rating {
+    .star-rating-review {
         display: flex;
         flex-direction: row-reverse;
         font-size: 2.25rem;
