@@ -18,12 +18,13 @@ public class RunningTimeController {
     }
 
     public void insert(RunningTimeDTO runningTimeDTO) {
-        String query = "insert into runningTime (film_id, theater_id, time) values (?,?,?)";
+        String query = "insert into runningTime (film_id, theater_id, startTime,endTime) values (?,?,?,?)";
         try {
             PreparedStatement pstmt = connection.prepareStatement(query);
             pstmt.setInt(1, runningTimeDTO.getFilm_id());
             pstmt.setInt(2, runningTimeDTO.getTheater_id());
-            pstmt.setTimestamp(3, runningTimeDTO.getTime());
+            pstmt.setTimestamp(3, runningTimeDTO.getStartTime());
+            pstmt.setTimestamp(4, runningTimeDTO.getEndTime());
             pstmt.executeUpdate();
 
             pstmt.close();
@@ -46,15 +47,15 @@ public class RunningTimeController {
             pstmt.setInt(1, id);
             ResultSet resultSet = pstmt.executeQuery();
             while (resultSet.next()) {
-                System.out.println("1111");
                 TimeTableDTO t = new TimeTableDTO();
                 t.setTitle(resultSet.getString("title"));
                 t.setLength(resultSet.getInt("length"));
                 t.setRating(resultSet.getString("rating"));
                 t.setNumber(resultSet.getInt("number"));
                 t.setScale(resultSet.getInt("scale"));
-                t.setTime(resultSet.getTimestamp("time"));
-                System.out.println("22222");
+                t.setStartTime(resultSet.getTimestamp("startTime"));
+                t.setEndTime(resultSet.getTimestamp("endTime"));
+                t.setFilm_id(resultSet.getInt("film_id"));
                 list.add(t);
 
 

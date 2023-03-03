@@ -12,7 +12,9 @@ public class TimeTableDTO {
     private String rating;
     private int number;
     private int scale;
-    private Timestamp time;
+    private Timestamp startTime;
+    private Timestamp endTime;
+    private int film_id;
 
 
 }

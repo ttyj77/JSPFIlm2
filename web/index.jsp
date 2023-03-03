@@ -74,10 +74,6 @@
             });
 
 
-            if (eventSwiper.autoplay.running) {
-                $('.btn_eventControl').addClass('active');
-            }
-
             $('.btn_eventControl').on({
                 click: function (e) {
                     if (eventSwiper.autoplay.running) {
@@ -200,7 +196,6 @@
                                     <a class="btn_movieChart_detail" href="/film/detailsPage.jsp?id=${f.id}">상세보기</a>
 
 
-
                                 </div>
                             </div>
                             <div class="movie_info_wrap">
@@ -249,15 +244,14 @@
                                     <a class="btn_movieChart_detail">상세보기</a>
 
 
-
                                 </div>
                             </div>
                             <div class="movie_info_wrap">
                                 <strong class="movieName">${f.title}</strong>
-<%--                                <span> <img--%>
-<%--                                        src='https://img.cgv.co.kr/R2014/images/common/egg/eggGoldeneggPreegg.png'--%>
-<%--                                        alt='Golden Egg Preegg'> 99%</span>--%>
-<%--                                <span>예매율 61.0%</span>--%>
+                                    <%--                                <span> <img--%>
+                                    <%--                                        src='https://img.cgv.co.kr/R2014/images/common/egg/eggGoldeneggPreegg.png'--%>
+                                    <%--                                        alt='Golden Egg Preegg'> 99%</span>--%>
+                                    <%--                                <span>예매율 61.0%</span>--%>
                             </div>
                         </div>
                     </c:forEach>

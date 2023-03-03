@@ -18,7 +18,6 @@
     ConnectionMaker connectionMaker = new MysqlConnectionMaker();
     UserController userController = new UserController(connectionMaker);
 
-    System.out.println("leverUp_logic");
     request.setCharacterEncoding("UTF-8");
     String levelUpId = request.getParameter("levelUpId");
     System.out.println(levelUpId);

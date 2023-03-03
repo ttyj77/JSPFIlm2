@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="/assets/css/glightbox.min.css"/>
     <link rel="stylesheet" href="/assets/css/main.css"/>
     <link rel="stylesheet" href="/assets/css/cgv.css"/>
+    <link rel="stylesheet" href="/assets/css/jquery.timepicker.css"/>
 
     <%
         ConnectionMaker connectionMaker = new MysqlConnectionMaker();
@@ -82,10 +83,11 @@
                                     <div class="col-10">
                                         <div class="form-box form-group">
                                             <select class="form-select " aria-label="Default select example"
-                                                    id="filmSelectbox" onchange="getFilm_value(this)" name="film_id">
+                                                    id="filmSelectbox" onchange="getFilm_value()" name="film_id">
                                                 <option selected value="1">영화를 선택해주세요</option>
                                                 <c:forEach var="f" items="${filmList}">
-                                                    <option value="${f.id}" name="film_id">${f.title}</option>
+                                                    <option value="${f.id}" value2="${f.length}"
+                                                            name="film_id">${f.title}</option>
                                                 </c:forEach>
                                             </select>
                                             <div id="film_id_div">
@@ -98,9 +100,13 @@
                                     <div class="col-2 cinema-input"><h3 style="font-size: 18px">상영시간 선택</h3></div>
                                     <div class="col-10">
                                         <div class="form-box form-group input-group mb-3">
-                                            <input type="datetime-local" value="2022-02-22" name="time">
-
-<%--                                            <input type="date" value="2022-02-22" name="time">--%>
+                                            <%--                                            <input type="datetime-local" value="2022-02-22" name="time">--%>
+                                            <h6>상영날짜 &nbsp&nbsp&nbsp&nbsp </h6> <input type="text" id="datepicker"
+                                                                                       name="date"><br>    <h6>
+                                            &nbsp&nbsp&nbsp&nbsp상영 시작시간 &nbsp&nbsp&nbsp&nbsp</h6> <input type="text"
+                                                                                                         class="form-box form-group"
+                                                                                                         id="timepicker1"
+                                                                                                         name="time">
                                         </div>
                                     </div>
 
@@ -177,20 +183,56 @@
 </script>
 
 <script>
-    function getFilm_value(id) {
+    function getFilm_value() {
+
+        var id = $("#filmSelectbox > option:selected").attr("value");
+        var length = $("#filmSelectbox > option:selected").attr("value2");
+
+        console.log(id)
+        console.log(length)
+
         let film_div = document.getElementById("film_id_div");
         film_div.innerHTML = "";
-        console.log("getFilm_value Id : " + id.value)
-        let film_id = id.value;
+        let film_id = id;
+        let film_length = length;
         let filmIdInput = document.createElement("input");
-
+        let filmLengthInput = document.createElement("input");
         filmIdInput.type = "hidden";
         filmIdInput.value = film_id;
         filmIdInput.name = "film_id";
+        filmLengthInput.type = "hidden";
+        filmLengthInput.value = film_length;
+        filmLengthInput.name = "film_length";
         film_div.appendChild(filmIdInput);
+        film_div.appendChild(filmLengthInput);
 
 
     }
+</script>
+<link rel="stylesheet" href="/jquery-ui.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
+
+<!-- Updated stylesheet url -->
+
+
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
+
+<!-- Updated JavaScript url -->
+<script src="//jonthornton.github.io/jquery-timepicker/jquery.timepicker.js"></script>
+
+<script>
+
+
+    $(function () {
+        $("#datepicker").datepicker();
+    });
+
+    $(function () {
+        $('#timepicker1').timepicker();
+    });
+
+
 </script>
 </body>
 </html>

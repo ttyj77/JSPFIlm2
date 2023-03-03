@@ -20,7 +20,7 @@ public class FilmController {
 
     public ArrayList<FilmDTO> selectAll() {
         ArrayList<FilmDTO> list = new ArrayList<>();
-        String query = "select * from film order by id";
+        String query = "select * from film order by id limit 20";
         try {
             PreparedStatement pstmt = connection.prepareStatement(query);
             ResultSet resultSet = pstmt.executeQuery();
@@ -62,6 +62,7 @@ public class FilmController {
                 f.setEnglish_title(resultSet.getString("english_title"));
                 f.setSummary(resultSet.getString("summary"));
                 f.setPoster_image(resultSet.getString("poster_image"));
+                f.setLength(resultSet.getInt("length"));
 
                 list.add(f);
             }

@@ -39,7 +39,7 @@
             <c:forEach var="r" items="${list}">
                 <div class="theater-list">
                     <div class="theater-tit"><p class="movie-grade age-12"></p>
-                        <p><a href="/movie-detail?rpstMovieNo=22088100" title="movieTitle">${r.title}</a></p>
+                        <p><a href="/film/detailsPage.jsp?id=${r.film_id}" title="movieTitle">${r.title}</a></p>
                         <p class="infomation"><span>상영중  </span> ${r.length} 분</p></div>
                     <div class="theater-type-box">
                         <div class="theater-type"><p class="theater-name">${r.number} 관</p>
@@ -57,14 +57,12 @@
                                             <div class="td-ab">
                                                 <div class="txt-center"><a href="" title="영화예매하기">
                                                     <div class="ico-box"><i class="iconset ico-off"></i></div>
-                                                    <p class="time"><fmt:formatDate value="${r.time}"
+                                                    <p class="time"><fmt:formatDate value="${r.startTime}"
                                                                                     pattern="M/dd HH : mm"/></p>
                                                     <p class="chair">${r.scale} 석</p>
-
                                                 </a></div>
                                             </div>
                                         </td>
-
                                     </tr>
                                     </tbody>
                                 </table>
@@ -74,7 +72,6 @@
                 </div>
             </c:forEach>
         </div>
-
         </c:otherwise>
         </c:choose>
 

@@ -32,6 +32,7 @@ public class ReplyServlet extends HttpServlet {
         ConnectionMaker connectionMaker = new MysqlConnectionMaker();
         ReviewController reviewController = new ReviewController(connectionMaker);
         UserController userController = new UserController(connectionMaker);
+
         JsonObject object = new JsonObject();
 
         String message = "";
@@ -45,9 +46,26 @@ public class ReplyServlet extends HttpServlet {
                 nextPath = "/user/login.jsp";
 
             }
+            Boolean doubleCheck = reviewController.doubleCheck(filmId, logIn);
+            System.out.println("double : " + doubleCheck);
+            if (!doubleCheck) {
+                message = "이미 작성하셨습니다.";
+                throw new NullPointerException();
+            }
             int writerId = logIn.getId();
             String review = request.getParameter("review");
+            System.out.println("user role : "+logIn.getRole());
+            if ((review.isEmpty() || request.getParameter("score") == null) && logIn.getRole() == 3) {
+                message = "평점과 평론 모두 입력해주세요.";
+                throw new NullPointerException();
+            }
+
             int score = Integer.parseInt(request.getParameter("score"));
+
+            System.out.println("review : " + review);
+            System.out.println("score : " + score);
+
+
             String nickname = userController.selectOne(writerId).getNickname();
 
             ReviewDTO r = new ReviewDTO();
@@ -63,6 +81,13 @@ public class ReplyServlet extends HttpServlet {
         } catch (NullPointerException e) {
             System.out.println("error page");
             object.addProperty("status", "fail");
+            object.addProperty("message", message);
+            object.addProperty("nextPath", nextPath);
+        } catch (Exception e) {
+            System.out.println("error page2");
+            e.printStackTrace();
+            object.addProperty("status", "fail");
+            message = "예상치 못한 오류가 발생했습니다..";
             object.addProperty("message", message);
             object.addProperty("nextPath", nextPath);
         }

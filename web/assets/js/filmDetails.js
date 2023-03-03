@@ -20,7 +20,6 @@ function initPage() {
                 console.log(data)
                 printData(data);
                 printReply(temp);
-                console.log("role : " + data.role)
 
                 if (data.role == 0 && data.role == 2) {
 
@@ -68,7 +67,6 @@ function initPage() {
 
 
 function printData(data) {
-    console.log("poster : " + data.poster)
 
     $('#film-poster').attr("src", data.poster)
     $('#film-title').text(data.title);
@@ -79,12 +77,11 @@ function printData(data) {
 }
 
 let insertReply = () => {
-    console.log($('#director-name').val())
-    console.log("insertReply")
     let formData = {
         filmId: $('#filmId').val(),
         score: $('#score').val(),
         review: $('#director-name').val()
+
     }
 
     console.log("formData : " + formData)
@@ -94,12 +91,10 @@ let insertReply = () => {
         data: formData,
         success: (message) => {
             let response = JSON.parse(message);
-            console.log(response.status)
-            console.log(response.nextPath)
             if (response.status == "fail") {
                 console.log("false if 문")
                 console.log(response.message)
-                Swal.fire({title: response.message, text: "로그인 화면으로 이동합니다.", icon: "error"}).then(() => {
+                Swal.fire({title: response.message, text: "에러 메세지를 확인해주세요", icon: "error"}).then(() => {
                     location.href = response.nextPath;
                 })
             } else {
@@ -109,7 +104,6 @@ let insertReply = () => {
 
         }
     })
-    console.log(formData);
 }
 
 
@@ -123,7 +117,6 @@ function printReply(filmId) {
         data: sendData,
         success: (message) => {
             let response = JSON.parse(message);
-            console.log("response : " + response);
             let replyArray = JSON.parse(response.list);
 
             console.log(replyArray)
@@ -136,6 +129,8 @@ function printReply(filmId) {
 function printList(replyArray) {
     var sum = 0;
     var cnt = 0;
+    var r_sum = 0;
+    var r_cnt = 0;
     if (replyArray.length == 0) {
         $('#film-review-count').text("아직 리뷰가 존재하지 않습니다.")
     } else {
@@ -158,25 +153,61 @@ function printList(replyArray) {
                 $(div_box).append(div_1);
                 $(div_box).append(div_2);
                 $(box).append(div_box);
+                r_cnt++
+                r_sum = r_sum + reply.score;
+
             } else if (reply.exist == "false") {
                 cnt++
                 sum = sum + reply.score
             }
 
         })
+        //별점코드
         if (sum > 0) {
             let avg = sum / cnt
-            let star_box = document.getElementById("star_box")
-            let rating_box = document.getElementById("star-rating")
+            let star_box = document.getElementById("star_box2")
+            let rating_box = document.getElementById("star-rating2")
             let h4 = document.createElement("h4")
-            let span = document.createElement("span")
-            let avgSpan = avg.toPrecision(3) * 10 + "%"
-            $(span).width(avgSpan)
-            $(h4).text(avg.toPrecision(3) * 10)
-            $(rating_box).append(span)
+            let star_score_1 = document.getElementById("starBox3")
+            let h5 = document.createElement("h5")
 
-            $(star_box).append(h4)
+            let span = document.createElement("span")
+            let avgSpan = avg.toPrecision(3) * 20 + "%" //span tag 안에 style 값
+            $(span).width(avgSpan)
+            $(h4).text(avg.toPrecision(3) + "점 (" + cnt + "개)")
+            $(rating_box).append(span)
             $(star_box).append(rating_box)
+            $(star_box).append(h4)
+
+
+            $(h5).html(avg.toPrecision(3) + "점 ");
+            $(star_score_1).append(h5)
+        }
+        if (r_sum > 0) {
+
+            console.log(r_sum)
+            console.log(r_cnt)
+            let r_avg = r_sum / r_cnt
+            console.log("-------"+r_avg.toPrecision(3))
+            let star_box = document.getElementById("star_box3")
+            let rating_box = document.getElementById("star-rating3")
+            let h4 = document.createElement("h4")
+            let star_score_2 = document.getElementById("starBox4")
+            let h5 = document.createElement("h5")
+
+            let span = document.createElement("span")
+            let avgSpan = r_avg.toPrecision(3) * 20 + "%" //span tag 안에 style 값
+            $(span).width(avgSpan)
+            $(h4).text(r_avg.toPrecision(3) + "점 (" + r_cnt + "개)")
+            $(h5).html(r_avg.toPrecision(3) + "점 ")
+
+
+            $(rating_box).append(span)
+            $(star_box).append(rating_box)
+            $(star_box).append(h4)
+
+            $(star_score_2).append(h5)
+
         }
     }
 

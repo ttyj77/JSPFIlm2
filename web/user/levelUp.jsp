@@ -91,7 +91,6 @@
     </div>
     <form method="post" onsubmit="return false" id="form">
 
-        <button id="send"></button>
     </form>
 </div>
 <script>

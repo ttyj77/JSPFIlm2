@@ -36,6 +36,7 @@
     <link rel="stylesheet" href="/assets/css/glightbox.min.css"/>
     <link rel="stylesheet" href="/assets/css/main.css"/>
     <link rel="stylesheet" href="/assets/css/cgv.css"/>
+    <link rel="stylesheet" href="/assets/css/star.css">
 
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
@@ -47,6 +48,9 @@
             crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <script src="/assets/js/filmDetails.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
 </head>
 <body onload="initPage()">
 <%
@@ -97,12 +101,18 @@
                         <h2 class="title" id="film-title"></h2>
                         <input type="hidden" id="filmId">
                         <p class="location"><a id="e-title" href="javascript:void(0)"></a></p>
-
-                        <h4 class="col-4">관람객 평점</h4>
-                        <div class="row">
-                            <h3>${averageReview}</h3>
-                            <%--                            <img src="/assets/images/star-32.pmg" style="width:50px; height: 30px">--%>
-
+                        <div style="display: flex; justify-content: space-between;" id="rating_score_1">
+                            <h5>관람객 평점</h5>
+                            <div class="star-rating_3" id="starBox3">
+                                <label class="star pr-4">★</label>
+                            </div>
+                        </div>
+                        <div style="display: flex;     justify-content: space-between; margin-top: 2%"
+                             id="rating_score_2">
+                            <h5>평론가 평점</h5>
+                            <div class="star-rating_3" id="starBox4">
+                                <label class="star pr-4">★</label>
+                            </div>
                         </div>
                         <div class="list-info">
                             <ul>
@@ -148,6 +158,13 @@
                             <%--전문가 평점 Start--%>
                             <div class="tab-pane fade" id="pills-contact" role="tabpanel"
                                  aria-labelledby="pills-contact-tab">
+                                <%--            평점 평균                    --%>
+                                <div class="wrap-star star_box" id="star_box3"
+                                     style="margin-top: 4%; margin-bottom: 4%">
+                                    <div class='star-rating' id="star-rating3">
+
+                                    </div>
+                                </div>
                                 <div id="review-box">
 
                                 </div>
@@ -183,14 +200,14 @@
                         <!-- Large modal -->
 
 
-                        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
-                             aria-hidden="true" id="review1">
+                        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true"
+                             id="review1">
                             <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                     </div>
                                     <h5 style="text-align: center; margin-bottom: 2%"> 평점 입력하기</h5>
-                                    <div class="star-rating-review space-x-4 mx-auto" id="starBox">
+                                    <div class="star-rating_1 space-x-4 mx-auto" id="starBox">
                                         <input type="radio" id="5-stars" name="rating" value="5" v-model="ratings"
                                                onclick="starValue(this.value)"/>
                                         <label for="5-stars" class="star pr-4">★</label>
@@ -224,23 +241,24 @@
                                     <div class="modal-header">
                                     </div>
                                     <h5 style="text-align: center; margin-bottom: 2%"> 평점 입력하기</h5>
-                                    <div class="star-rating-review space-x-4 mx-auto" id="starBox">
-                                        <input type="radio" id="5-stars" name="rating" value="5" v-model="ratings"
+                                    <div class="star-rating_2 space-x-4 mx-auto" id="starBox2">
+                                        <input type="radio" id="5-stars2" name="rating" value="5" v-model="ratings"
                                                onclick="starValue(this.value)"/>
-                                        <label for="5-stars" class="star pr-4">★</label>
-                                        <input type="radio" id="4-stars" name="rating" value="4" v-model="ratings"
+                                        <label for="5-stars2" class="star pr-4">★</label>
+                                        <input type="radio" id="4-stars2" name="rating" value="4" v-model="ratings"
                                                onclick="starValue(this.value)"/>
-                                        <label for="4-stars" class="star">★&nbsp &nbsp </label>
-                                        <input type="radio" id="3-stars" name="rating" value="3" v-model="ratings"
+                                        <label for="4-stars2" class="star">★&nbsp &nbsp </label>
+                                        <input type="radio" id="3-stars2" name="rating" value="3" v-model="ratings"
                                                onclick="starValue(this.value)"/>
-                                        <label for="3-stars" class="star">★&nbsp &nbsp </label>
-                                        <input type="radio" id="2-stars" name="rating" value="2" v-model="ratings"
+                                        <label for="3-stars2" class="star">★&nbsp &nbsp </label>
+                                        <input type="radio" id="2-stars2" name="rating" value="2" v-model="ratings"
                                                onclick="starValue(this.value)"/>
-                                        <label for="2-stars" class="star">★&nbsp &nbsp </label>
-                                        <input type="radio" id="1-star" name="rating" value="1" v-model="ratings"
+                                        <label for="2-stars2" class="star">★&nbsp &nbsp </label>
+                                        <input type="radio" id="1-star2" name="rating" value="1" v-model="ratings"
                                                onclick="starValue(this.value)"/>
-                                        <label for="1-star" class="star">★&nbsp &nbsp </label>
+                                        <label for="1-star2" class="star">★&nbsp &nbsp </label>
                                     </div>
+
                                     <div class="modal-body">
                                         <div class="form-group">
                                             <label for="director-name" class="col-form-label fs-6">리뷰를
@@ -295,9 +313,6 @@
                 img.style.opacity = 1;
             });
             current.src = e.target.src;
-            //adding class
-            //current.classList.add("fade-in");
-            //opacity
             e.target.style.opacity = opacity;
         });
     });
@@ -307,8 +322,6 @@
 
 
 <style>
-
-
     h2 {
         font-size: 15px;
     }
@@ -353,7 +366,6 @@
         hiddenInput.value = id;
         let starBox = document.getElementById("starBox");
         starBox.appendChild(hiddenInput);
-
     }
 
 </script>

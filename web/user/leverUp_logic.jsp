@@ -18,7 +18,6 @@
     ConnectionMaker connectionMaker = new MysqlConnectionMaker();
     UserController userController = new UserController(connectionMaker);
 
-    System.out.println("leverUp_logic");
     request.setCharacterEncoding("UTF-8");
     String user_id = request.getParameter("id");
     String old_role = request.getParameter("oldRole");
