@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: ttyj7
-  Date: 2023-02-14
-  Time: 오후 3:18
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -15,7 +8,6 @@
     <meta name="description" content=""/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.svg"/>
-    <!-- Place favicon.ico in the root directory -->
 
     <!-- Web Font -->
     <link
@@ -31,8 +23,24 @@
     <link rel="stylesheet" href="/assets/css/glightbox.min.css"/>
     <link rel="stylesheet" href="/assets/css/main.css"/>
 </head>
-<body>
-<%@include file="/layout/header.jsp"%>
+<body onload="noBack();" onpageshow="if(event.persisted) noBack();" onunload="">
+<%@include file="/layout/header.jsp" %>
+<%
+    UserDTO logIn = (UserDTO) session.getAttribute("logIn");
+    if (logIn != null) {
+        response.sendRedirect("/index.jsp");
+    }
+%>
+<script>
+
+    window.history.forward();
+    function noBack(){
+        window.history.forward();
+    }
+
+</script>
+
+
 <!-- start login section -->
 <section class="login section">
     <div class="container">
@@ -48,6 +56,7 @@
                         <div class="form-group">
                             <label>Password</label>
                             <input name="password" type="password" placeholder="비밀번호를 입력해주세요">
+
                         </div>
                         <div class="check-and-pass">
                             <div class="row align-items-center">

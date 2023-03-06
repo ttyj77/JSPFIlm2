@@ -43,7 +43,7 @@ public class ReviewController {
 
     public ArrayList<ReviewDTO> selectOneReviewList(int film_id) {
         ArrayList<ReviewDTO> list = new ArrayList<>();
-        String query = "SELECT * FROM film.review where film_id = ?";
+        String query = "SELECT * FROM film.review where film_id = ? order by id desc";
 
         try {
             PreparedStatement pstmt = connection.prepareStatement(query);

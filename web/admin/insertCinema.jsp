@@ -57,7 +57,7 @@
                     <div class="item-details-sidebar">
                         <!-- Start Single Block -->
                         <div class="single-block contant-seller comment-form ">
-                            <form action="insert_logic.jsp" method="post">
+                            <form action="../cinema/insert_logic.jsp" method="post">
                                 <div class="row">
                                     <div class="col-2 cinema-input"><h3 class="fs-5">지점명</h3></div>
                                     <div class="col-10">

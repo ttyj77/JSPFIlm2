@@ -63,7 +63,7 @@
     r.setEndTime(Timestamp.valueOf(endTime));
 
     runningTimeController.insert(r);
-//    response.sendRedirect("/index.jsp");
+    response.sendRedirect("/index.jsp");
 
 %>
 

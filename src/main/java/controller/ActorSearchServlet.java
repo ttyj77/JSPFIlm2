@@ -23,14 +23,12 @@ public class ActorSearchServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=UTF-8");
         String actorName = request.getParameter("actorName");
+        System.out.println("actorName : " + actorName);
 
         response.getWriter().write(getJSON(actorName));
     }
 
     public String getJSON(String actorName) {
-//        if (cityId == 0) { //잘못선택
-//
-//        }
 
         ConnectionMaker connectionMaker = new MysqlConnectionMaker();
 

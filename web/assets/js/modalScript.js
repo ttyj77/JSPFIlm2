@@ -2,10 +2,8 @@ let request = new XMLHttpRequest();
 let button_id = 1;
 
 function searchActor(actorName) {
-    // request.open("Post", "../CinemaSearchServlet?cityId=" + encodeURIComponent(document.getElementById("cityId").value), true);
     request.open("Post", "../ActorSearchServlet?actorName=" + actorName, true);
-
-    // console.log("request: " + request)
+    request.onreadystatechange = searchProcess_actor;
     request.send(null);
 }
 
@@ -13,7 +11,6 @@ function searchDirector(actorName) {
     // request.open("Post", "../CinemaSearchServlet?cityId=" + encodeURIComponent(document.getElementById("cityId").value), true);
     request.open("Post", "../ActorSearchServlet?actorName=" + actorName, true);
     request.onreadystatechange = searchProcess_director;
-    // console.log("request: " + request)
     request.send(null);
 }
 

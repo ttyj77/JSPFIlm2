@@ -13,6 +13,7 @@
 
 </head>
 <body>
+
 <%@include file="/layout/header.jsp" %>
 <div class="container">
     <h3 style="margin-top: 3%">관리자 메뉴</h3>
@@ -21,28 +22,28 @@
             <div class="card-header">회원관리</div>
             <div class="card-body">
                 <button class="btn btn-primary innerTop" href="/#">회원 목록조회</button>
-                <button class="btn btn-primary innerUnder"  onclick="location.href='/user/levelUp.jsp'">회원 등급변경</button>
+                <button class="btn btn-primary innerUnder"  onclick="location.href='../admin/levelUp.jsp'">회원 등급변경</button>
             </div>
         </div>
         <div class="card text-white bg-primary manageBt" style="background-color: #858c9659 !important;">
             <div class="card-header">극장관리</div>
             <div class="card-body">
-                <button class="btn btn-primary innerTop" onclick="location.href='/cinema/insertCinema.jsp'">극장 신규등록</button>
-                <button class="btn btn-primary innerUnder" onclick="location.href='/cinema/cinema_admin.jsp'">극장 목록조회</button>
+                <button class="btn btn-primary innerTop" onclick="location.href='../admin/insertCinema.jsp'">극장 신규등록</button>
+                <button class="btn btn-primary innerUnder" onclick="location.href='../admin/cinema_admin.jsp'">극장 목록조회</button>
             </div>
         </div>
         <div class="card text-white bg-primary manageBt" style="background-color: #858c9659 !important;">
             <div class="card-header">상영정보관리</div>
             <div class="card-body">
-                <button class="btn btn-primary innerTop" onclick="location.href='/theater/insertTheater.jsp'">상영정보 신규등록</button>
+                <button class="btn btn-primary innerTop" onclick="location.href='../admin/insertTheater.jsp'">상영정보 신규등록</button>
                 <button class="btn btn-primary innerUnder">상영정보 목록조회</button>
             </div>
         </div>
         <div class="card text-white bg-primary manageBt" style="background-color: #858c9659 !important;">
             <div class="card-header">영화관리</div>
             <div class="card-body">
-                <button class="btn btn-primary innerTop" onclick="location.href='/film/insertFilm.jsp'">영화 신규등록</button>
-                <button class="btn btn-primary innerUnder" onclick="location.href='/film/film_admin.jsp'">영화 목록조회</button>
+                <button class="btn btn-primary innerTop" onclick="location.href='../admin/insertFilm.jsp'">영화 신규등록</button>
+                <button class="btn btn-primary innerUnder" onclick="location.href='../admin/film_admin.jsp'">영화 목록조회</button>
             </div>
         </div>
     </div>

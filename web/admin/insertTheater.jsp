@@ -26,6 +26,19 @@
     <link rel="stylesheet" href="/assets/css/cgv.css"/>
     <link rel="stylesheet" href="/assets/css/jquery.timepicker.css"/>
 
+    <link rel="stylesheet" href="/jquery-ui.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
+
+    <!-- Updated stylesheet url -->
+
+
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
+
+    <!-- Updated JavaScript url -->
+    <script src="//jonthornton.github.io/jquery-timepicker/jquery.timepicker.js"></script>
+
+
     <%
         ConnectionMaker connectionMaker = new MysqlConnectionMaker();
         CinemaController cinemaController = new CinemaController(connectionMaker);
@@ -53,7 +66,7 @@
                     <div class="item-details-sidebar">
                         <!-- Start Single Block -->
                         <div class="single-block contant-seller comment-form ">
-                            <form action="insert_logic.jsp" method="post">
+                            <form action="../theater/insert_logic.jsp" method="post">
                                 <div class="row">
                                     <div class="col-2 cinema-input"><h3 class="fs-5">영화관 선택</h3></div>
                                     <div class="col-10">
@@ -102,11 +115,13 @@
                                         <div class="form-box form-group input-group mb-3">
                                             <%--                                            <input type="datetime-local" value="2022-02-22" name="time">--%>
                                             <h6>상영날짜 &nbsp&nbsp&nbsp&nbsp </h6> <input type="text" id="datepicker"
-                                                                                       name="date"><br>    <h6>
-                                            &nbsp&nbsp&nbsp&nbsp상영 시작시간 &nbsp&nbsp&nbsp&nbsp</h6> <input type="text"
-                                                                                                         class="form-box form-group"
-                                                                                                         id="timepicker1"
-                                                                                                         name="time">
+                                                                                       name="date"
+                                                                                       onchange="setMinValue()"><br>
+                                            <h6>
+                                                &nbsp&nbsp&nbsp&nbsp상영 시작시간 &nbsp&nbsp&nbsp&nbsp</h6> <input type="text"
+                                                                                                             class="form-box form-group"
+                                                                                                             id="timepicker1"
+                                                                                                             name="time">
                                         </div>
                                     </div>
 
@@ -169,20 +184,6 @@
 </script>
 
 <script>
-
-
-    function setMinValue() {
-        // console.log("111  " + dateElement.value.toLocaleDateString());
-        console.log("222  " + nowDate.toLocaleDateString())
-        console.log(typeof nowDate)
-        if (dateElement.value < date) {
-            alert('지난 날짜는 설정할 수 없습니다.');
-            dateElement.value = date;
-        }
-    }
-</script>
-
-<script>
     function getFilm_value() {
 
         var id = $("#filmSelectbox > option:selected").attr("value");
@@ -209,23 +210,13 @@
 
     }
 </script>
-<link rel="stylesheet" href="/jquery-ui.css">
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
-
-<!-- Updated stylesheet url -->
-
-
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-<script src="//code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
-
-<!-- Updated JavaScript url -->
-<script src="//jonthornton.github.io/jquery-timepicker/jquery.timepicker.js"></script>
 
 <script>
 
 
     $(function () {
         $("#datepicker").datepicker();
+
     });
 
     $(function () {
@@ -233,6 +224,19 @@
     });
 
 
+    function setMinValue() {
+        const today = new Date();
+        let choiceDate = $('#datepicker').val();
+        let date = new Date();
+        console.log($('#datepicker').val())
+        console.log(today.toLocaleDateString());
+
+        console.log(choiceDate.compareTo (today))
+
+        if (choiceDate < date) {
+            alert('지난 날짜는 설정할 수 없습니다.');
+        }
+    }
 </script>
 </body>
 </html>

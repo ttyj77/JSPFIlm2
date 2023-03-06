@@ -38,6 +38,7 @@
     <div class="contents">
 
         <div class="fs-3 info-box">${t.name}</div>
+        <input type="hidden" name="id" id="cinemaId" value="${t.id}">
         <div class="T-information">
             <div class="row">
                 <div class="T-info-content">

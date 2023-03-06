@@ -26,6 +26,7 @@
             integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
             crossorigin="anonymous"></script>
 
+
 </head>
 <body>
 <%
@@ -40,8 +41,9 @@
 
     System.out.println("id : " + id);
     ArrayList<TimeTableDTO> list = runningTimeController.selectRunningTable(id);
-    System.out.println("list : " + list);
+    ArrayList<TimeTableDTO> filmIdList = runningTimeController.selectFilmId(id);
     pageContext.setAttribute("list", list);
+    pageContext.setAttribute("filmIdList", filmIdList);
 
 %>
 

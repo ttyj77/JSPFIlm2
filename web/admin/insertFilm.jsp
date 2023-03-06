@@ -15,7 +15,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Admin-FilmInsert</title>
+    <title>영화 신규 등록</title>
     <meta charset="utf-8"/>
     <meta http-equiv="x-ua-compatible" content="ie=edge"/>
     <title>Ads Details - ClassiGrids Classified Ads and Listing Website Template</title>
@@ -45,19 +45,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </head>
 <body>
-<%
-    ConnectionMaker connectionMaker = new MysqlConnectionMaker();
-    FilmController filmController = new FilmController(connectionMaker);
-    ReviewController reviewController = new ReviewController(connectionMaker);
-    ActorController actorController = new ActorController(connectionMaker);
-    SimpleDateFormat sdf = new SimpleDateFormat("yy년 MM월 dd일 H:m:s");
-
-//        ReplyDTO r = replyController.selectOne(id); //여기서 아이디는 댓글아이디가 필요하다.
-//    ArrayList<FilmDTO> list = filmController.selectAll(f.getId()); //댓글리스트
-//    ReplyController replyController = new ReplyController(connectionMaker);
-
-%>
-<%--변수선언--%>
 
 <%@include file="/layout/header.jsp" %>
 <!-- Start Item Details -->
@@ -65,7 +52,7 @@
 
     <div class="container">
         <h3>영화 등록 페이지</h3>
-        <form method="post" action="insert_logic.jsp" enctype="multipart/form-data">
+        <form method="post" action="../film/insert_logic.jsp" enctype="multipart/form-data">
             <div class="top-area">
                 <div class="row">
                     <div class="col-lg-6 col-md-12 col-12">
@@ -262,6 +249,7 @@
                         </div>
                     </div>
                 </div>
+            </div>
         </form>
     </div>
 </section>

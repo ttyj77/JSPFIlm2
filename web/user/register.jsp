@@ -34,8 +34,19 @@
 
 
 </head>
-
-<body>
+<body onload="noBack();" onpageshow="if(event.persisted) noBack();" onunload="">
+<%
+    UserDTO logIn = (UserDTO) session.getAttribute("logIn");
+    if (logIn != null) {
+        response.sendRedirect("/index.jsp");
+    }
+%>
+<script>
+    window.history.forward();
+    function noBack(){
+        window.history.forward();
+    }
+</script>
 <%@include file="/layout/header.jsp" %>
 <!-- start Registration section -->
 <section class="login registration section">

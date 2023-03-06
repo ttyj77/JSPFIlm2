@@ -94,9 +94,23 @@ let insertReply = () => {
             if (response.status == "fail") {
                 console.log("false if 문")
                 console.log(response.message)
-                Swal.fire({title: response.message, text: "에러 메세지를 확인해주세요", icon: "error"}).then(() => {
-                    location.href = response.nextPath;
-                })
+                // Swal.fire({title: response.message, text: "에러2222 메세지를 확인해주세요", icon: "error"}).then(() => {
+                //     location.href = response.nextPath;
+                // })
+                // Swal.fire({
+                //     title: '이미작성한 리뷰입니다. 수정하시겠습니까?',
+                //     showDenyButton: true,
+                //     showCancelButton: true,
+                //     confirmButtonText: '수정하기',
+                //     denyButtonText: `닫기`,
+                // }).then((result) => {
+                //     /* Read more about isConfirmed, isDenied below */
+                //     if (result.isConfirmed) {
+                //         Swal.fire('Saved!', '', 'success')
+                //     } else if (result.isDenied) {
+                //         Swal.fire('Changes are not saved', '', 'info')
+                //     }
+                // })
             } else {
                 location.reload();
             }
@@ -105,7 +119,6 @@ let insertReply = () => {
         }
     })
 }
-
 
 function printReply(filmId) {
     let sendData = {
@@ -188,7 +201,7 @@ function printList(replyArray) {
             console.log(r_sum)
             console.log(r_cnt)
             let r_avg = r_sum / r_cnt
-            console.log("-------"+r_avg.toPrecision(3))
+            console.log("-------" + r_avg.toPrecision(3))
             let star_box = document.getElementById("star_box3")
             let rating_box = document.getElementById("star-rating3")
             let h4 = document.createElement("h4")
